@@ -124,6 +124,7 @@ class FSManager(FileContentsManager):
             # pyfs is a FS instance
             self._pyfilesystem_instance = pyfs
         else:
+            print("debug test")
             raise TypeError("pyfs must be a url, an FS subclass, or an FS instance")
 
     @default('checkpoints_class')
