@@ -41,9 +41,8 @@ install:
 - curl http://127.0.0.1:9000/
 
 # install python deps
-- SET CONDA_INSTALL_LOCN="C:\\Miniconda-x64"
-- SET PATH=%CONDA_INSTALL_LOCN%;%CONDA_INSTALL_LOCN%\Scripts;%PATH%
-- conda install -y pywinpty
+- pip install pipwin
+- pipwin install pywinpty
 - pip install --upgrade -e .[dev] -v
 
 # install js deps
