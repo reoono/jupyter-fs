@@ -48,17 +48,16 @@ install:
 
 # install winpty
 - curl -#Lo winpty-native.zip "https://github.com/rprichard/winpty/releases/download/0.4.2/winpty-0.4.2-msvc2015.zip"
-- call 7z e -y -o"winpty\x86" winpty-native.zip "ia32\bin\winpty.dll" > nul
-- call 7z e -y -o"winpty\x86" winpty-native.zip "ia32\bin\winpty-agent.exe" > nul
-- call 7z e -y -o"winpty\x86" winpty-native.zip "ia32\bin\winpty-debugserver.exe" > nul
-- call 7z e -y -o"winpty\x64" winpty-native.zip "x64\bin\winpty.dll" > nul
-- call 7z e -y -o"winpty\x64" winpty-native.zip "x64\bin\winpty-agent.exe" > nul
-- call 7z e -y -o"winpty\x64" winpty-native.zip "x64\bin\winpty-debugserver.exe" > nul
+- call 7z e -y -o"winpty\x86\bin" winpty-native.zip "ia32\bin\winpty.dll" > nul
+- call 7z e -y -o"winpty\x86\bin" winpty-native.zip "ia32\bin\winpty-agent.exe" > nul
+- call 7z e -y -o"winpty\x86\bin" winpty-native.zip "ia32\bin\winpty-debugserver.exe" > nul
+- call 7z e -y -o"winpty\x86\lib" winpty-native.zip "ia32\lib\winpty.lib" > nul
 - call 7z e -y -o"winpty\include" winpty-native.zip "include\winpty.h" > nul
 - call 7z e -y -o"winpty\include" winpty-native.zip "include\winpty_constants.h" > nul
-- set PATH=%PATH%;%CD%\\winpty\\x86
-- set LIB=%LIB%;%CD%\\winpty\\x86
-- set INCLUDE=%INCLUDE%;%CD%\\winpty\\include
+- set PATH=%CD%\\winpty\\x86\\bin;%PATH%
+- set LIB=%CD%\\winpty\\x86\\lib;%LIB%
+- set INCLUDE=%CD%\\winpty\\include;%INCLUDE%
+- echo %PATH%
 - pip install --upgrade -e .[dev] -v
 
 # install js deps
