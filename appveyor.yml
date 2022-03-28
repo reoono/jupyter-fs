@@ -28,12 +28,6 @@ init:
 # install yarn globally
 - npm install -g yarn
 
-# install rust
-- appveyor DownloadFile https://win.rustup.rs/ -FileName rustup-init.exe
-- rustup-init -yv --default-toolchain stable --default-host i686-pc-windows-msvc
-- set PATH=%PATH%;%USERPROFILE%\.cargo\bin
-- del rustup-init.exe
-
 
 install:
 # set up a windows file share named "test"
@@ -47,6 +41,7 @@ install:
 - curl http://127.0.0.1:9000/
 
 # install python deps
+- pip install pywinpty==0.5.7
 - pip install --upgrade -e .[dev] -v
 
 # install js deps
