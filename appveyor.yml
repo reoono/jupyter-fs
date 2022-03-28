@@ -41,8 +41,9 @@ install:
 - curl http://127.0.0.1:9000/
 
 # install python deps
-- pip install pywinpty==0.5.7
-- pip install -e .[dev] -v
+- SET PATH=%CONDA_INSTALL_LOCN%;%CONDA_INSTALL_LOCN%\Scripts;%PATH%
+- conda install -y pywinpty
+- pip install --upgrade -e .[dev] -v
 
 # install js deps
 - yarn install
