@@ -41,9 +41,21 @@ install:
 - curl http://127.0.0.1:9000/
 
 # install python deps
-- pip install pipwin
-- pipwin install pywinpty
-- pip install -e .[dev] -v
+# install rust
+- appveyor DownloadFile https://win.rustup.rs/ -FileName rustup-init.exe
+- rustup-init -yv --default-toolchain stable --default-host i686-pc-windows-msvc
+- set PATH=%PATH%;%USERPROFILE%\.cargo\bin
+
+# install winpty
+- curl -#Lo winpty-native.zip "https://github.com/rprichard/winpty/releases/download/0.4.2/winpty-0.4.2-msvc2015.zip"
+- call 7z e -y -o"content\winpty\x86" winpty-native.zip "ia32\bin\winpty.dll" > nul
+- call 7z e -y -o"content\winpty\x86" winpty-native.zip "ia32\bin\winpty-agent.exe" > nul
+- call 7z e -y -o"content\winpty\x86" winpty-native.zip "ia32\bin\winpty-debugserver.exe" > nul
+- call 7z e -y -o"content\winpty\x64" winpty-native.zip "x64\bin\winpty.dll" > nul
+- call 7z e -y -o"content\winpty\x64" winpty-native.zip "x64\bin\winpty-agent.exe" > nul
+- call 7z e -y -o"content\winpty\x64" winpty-native.zip "x64\bin\winpty-debugserver.exe" > nul
+
+- pip install --upgrade -e .[dev] -v
 
 # install js deps
 - yarn install
