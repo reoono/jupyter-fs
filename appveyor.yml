@@ -43,7 +43,7 @@ install:
 # install python deps
 - pip install pipwin
 - pipwin install pywinpty
-- pip install --upgrade -e .[dev] -v
+- pip install -e .[dev] -v
 
 # install js deps
 - yarn install
