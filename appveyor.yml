@@ -42,7 +42,7 @@ install:
 
 # install python deps
 - pip install pywinpty==0.5.7
-- pip install --upgrade -e .[dev] -v
+- pip install -e .[dev] -v
 
 # install js deps
 - yarn install
